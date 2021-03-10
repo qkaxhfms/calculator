@@ -34,16 +34,15 @@ button{
     gap:0.5rem;
 
 }
-.calculator .screen{
+.screen{
     grid-column:1/5;
-
 }
-.btnzZero{
-    grid-column:4/5;
-    width:100%;
+.btnZero{
+    grid-column:2/4;
 }
 .btnResult{
-    grid-row: 3/7;
+    grid-row: 3/5;
 }
-.calculator .btn{
+.btnReset{
+    grid-row: 5/7;
 }
