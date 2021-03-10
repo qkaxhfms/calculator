@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="stylesheet" href="calculator.css">
         <script defer src="calculator.js"></script>
     </head>
     <body>
@@ -16,26 +17,32 @@
             </div>
             <!-- 패널:E -->
 
-            <!-- 숫자:S -->
-            <button type="button" data-attr="number" class="btn btnNum" value="1">1</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="2">2</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="3">3</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="4">4</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="5">5</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="6">6</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="7">7</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="8">8</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="9">9</button>
-            <button type="button" data-attr="number" class="btn btnNum" value="0">0</button>
-            <button type="button" data-attr="number" class="btn btnDot" value=".">.</button>
-            <!-- 숫자:E -->
 
-            <!-- 연산자:S -->
             <button type="button" data-attr="operator" class="btn btnOperator" value="+">+</button>
             <button type="button" data-attr="operator" class="btn btnOperator" value="-">-</button>
             <button type="button" data-attr="operator" class="btn btnOperator" value="x">x</button>
             <button type="button" data-attr="operator" class="btn btnOperator" value="/">/</button>
+
+            <button type="button" data-attr="number" class="btn btnNum" value="1">1</button>
+            <button type="button" data-attr="number" class="btn btnNum" value="2">2</button>
+            <button type="button" data-attr="number" class="btn btnNum" value="3">3</button>
+            <button type="button" data-attr="operator" class="btn btnOperator btnResult" value="=">=</button>
+
+            <button type="button" data-attr="number" class="btn btnNum" value="4">4</button>
+            <button type="button" data-attr="number" class="btn btnNum" value="5">5</button>
+            <button type="button" data-attr="number" class="btn btnNum" value="6">6</button>
+
+            <button type="button" data-attr="number" class="btn btnNum" value="7">7</button>
+            <button type="button" data-attr="number" class="btn btnNum" value="8">8</button>
+            <button type="button" data-attr="number" class="btn btnNum" value="9">9</button>
+
+            <button type="button" data-attr="number" class="btn btnNum btnZero" value="0">0</button>
+            <button type="button" data-attr="number" class="btn btnDot" value=".">.</button>
+
+            <!-- 연산자:S -->
             <!-- 연산자:E -->
+            <!-- 결과:S -->
+            <!-- 결과:E -->
         </div>
         <!-- 계산기:E -->
     </body>
