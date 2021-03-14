@@ -29,12 +29,8 @@ const calculate = () => {
 
 
 let step1 = [];
-
-let numberList = [];
-
-
+let currentNum = 0;
 let result = 0;
-
 
 
 
@@ -49,20 +45,19 @@ btns.map((btn) => {
         //     numberAfter: []
         // };
 
+        let combineNumber = [];
+
         // 계산
         if (this.dataset.attr === 'operator') {
             // console.log('연산자')
             if (this.value === '+') {
-                console.log('더하기');
-                let combineNumber = [];
-                let combineStep1 = step1.join("");
-                combineNumber.push(combineStep1);
-                numberList.push(combineNumber);
-                numberList.join(",")
-                // numberList.join(",");
-                
-                console.log(combineNumber);
-                // console.log(numberList);
+                console.log(currentNum);
+
+                let plusStep1 = [];
+                plusStep1.push(currentNum);
+                console.log(plusStep1);
+                result += plusStep1 + "+";
+                console.log(result);
 
             }
             if(this.value ==='-'){
@@ -83,7 +78,10 @@ btns.map((btn) => {
         // 숫자
         if (this.dataset.attr === 'number') {
             let numberCurrent = this.value;
-            step1.push(numberCurrent);
+            step1.push(numberCurrent);            
+            let combineStep1 = step1.join("");
+            combineNumber.push(combineStep1);
+            currentNum = combineNumber;
         }
 
 
