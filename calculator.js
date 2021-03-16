@@ -7,93 +7,62 @@
 4. 누른값이 화면에 표시되어야 한다.
 */
 
-// 초기화
-let defaultValue = {
-    displayValue: 0,
-    calculate: 0,
-};
+console.log("hello");
 
-// 화면 표시
-const display = document.querySelector('.defaultScreen');
-let displayScreen = () => {
-    console.log('화면표시');
-    display.value = defaultValue.displayValue;
-};
+const btns = document.querySelectorAll('.btn');
 
-// 계산
-const calculate = () => {
-    let calculateProcess = [];
-    console.log('사칙연산');
-    // console.log(calculateProcess);
-};
+let calculateProcess = {
+	step1:[], // 첫 숫자 넣기
+	step2:undefined, // 넣은 숫자 동기화
+	step3:undefined,
+}		
 
+let resultBefore = [];
+let resultAfter = undefined;
 
-let step1 = [];
-let currentNum = 0;
-let result = 0;
-
-
-
-// 버튼 클릭 시
-const btns = Array.from(document.querySelectorAll('.btn'));
-btns.map((btn) => {
-    btn.addEventListener('click', function () {
-        // 계산 초기값
-        // let defaultValueAll = {
-
-        //     numberBefore: [],
-        //     numberAfter: []
-        // };
-
-        let combineNumber = [];
-
-        // 계산
-        if (this.dataset.attr === 'operator') {
-            // console.log('연산자')
-            if (this.value === '+') {
-                console.log(currentNum);
-
-                let plusStep1 = [];
-                plusStep1.push(currentNum);
-                console.log(plusStep1);
-                result += plusStep1 + "+";
-                console.log(result);
-
-            }
-            if(this.value ==='-'){
-                console.log('빼기')
-            }
-            if(this.value ==='x'){
-                console.log('곱하기')
-            }
-            if(this.value ==='/'){
-                console.log('나누기')
-            }
-            if(this.value ==='cal'){
-                console.log('초기화')
-            }
-        }
-
-
-        // 숫자
-        if (this.dataset.attr === 'number') {
-            let numberCurrent = this.value;
-            step1.push(numberCurrent);            
-            let combineStep1 = step1.join("");
-            combineNumber.push(combineStep1);
-            currentNum = combineNumber;
-        }
-
-
-
+btns.forEach(btn=>{
+	
+	btn.addEventListener('click',()=>{				
+		
+		if(btn.dataset.attr == 'operator'){
+			console.log(calculateProcess.step1);
+			let combineNum = calculateProcess.step1.join(" ");
+			
+			resultBefore.push(combineNum);
+			resultBefore.push(btn.dataset.calculateType);
+			// 			
+			calculateProcess.step1.length = 0;
+			console.log(resultBefore);
+			
+			if(btn.dataset.calculateType =='plus'){
+				// console.log('더하기')
+			}
+			if(btn.dataset.calculateType =='minus'){
+				// console.log('더하기')
+			}
+			if(btn.dataset.calculateType =='multiply'){
+				// console.log('더하기')
+			}
+			if(btn.dataset.calculateType =='devide'){
+				// console.log('더하기')
+			}
+		};
         
-        // console.log(result);
-        // console.log(step1);
+        if(btn.dataset.attr =='result'){
+            console.log('결과');
+            // resultAfter = resultBefore;
+            // console.log(resultAfter);
+        }
+		
+		if(btn.dataset.attr =='num'){
+			
+			let value = btn.value;
+			calculateProcess.step1.push(value);
+			console.log(calculateProcess.step1);
+			// calculateProcess.step2 = combineNumStep1; 
+			// console.log(calculateProcess.step2);
+		}
+		
+	})
+})
 
-        // 상태를 보여줌
-        // defaultValue.displayValue = this.value;
-        // displayScreen();
-    });
-});
-
-// console.log(result);

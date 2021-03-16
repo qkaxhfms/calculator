@@ -36,14 +36,14 @@ button{
 .screen{
     grid-column:1/5;
 }
-.btnZero{
+.zero{
     grid-column:1/span 2;
 }
-.btnResult{
+.result{
     grid-column:4;
     grid-row:3 / span 2;
 }
-.btnReset{
+.reset{
     grid-column:4;
     grid-row: 5/7;
 }
