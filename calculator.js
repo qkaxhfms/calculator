@@ -18,7 +18,8 @@ let calculateProcess = {
 }		
 
 let resultBefore = [];
-let resultAfter = undefined;
+let resultAfter = [];
+let result = undefined;
 
 btns.forEach(btn=>{
 	
@@ -32,7 +33,6 @@ btns.forEach(btn=>{
 			resultBefore.push(btn.dataset.calculateType);
 			// 			
 			calculateProcess.step1.length = 0;
-			console.log(resultBefore);
 			
 			if(btn.dataset.calculateType =='plus'){
 				// console.log('더하기')
@@ -52,6 +52,13 @@ btns.forEach(btn=>{
             console.log('결과');
             // resultAfter = resultBefore;
             // console.log(resultAfter);
+			console.log(resultBefore);
+			resultAfter = resultBefore;
+			console.log(resultAfter);
+			// resultAfter.forEach(elem => {
+			// 	result +=elem;
+			// })
+			// console.log(result);
         }
 		
 		if(btn.dataset.attr =='num'){
