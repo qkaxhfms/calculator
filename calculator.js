@@ -53,8 +53,6 @@ btns.forEach(btn=>{
             // resultAfter = resultBefore;
             // console.log(resultAfter);
 			console.log(resultBefore);
-			resultAfter = resultBefore;
-			console.log(resultAfter);
 			// resultAfter.forEach(elem => {
 			// 	result +=elem;
 			// })
