@@ -33,9 +33,10 @@ btns.forEach(btn=>{
 			resultBefore.push(btn.dataset.calculateType);
 			// 			
 			calculateProcess.step1.length = 0;
+			console.log(resultBefore)
 			
 			if(btn.dataset.calculateType =='plus'){
-				// console.log('더하기')
+				console.log('더하기');
 			}
 			if(btn.dataset.calculateType =='minus'){
 				// console.log('더하기')
@@ -50,9 +51,13 @@ btns.forEach(btn=>{
         
         if(btn.dataset.attr =='result'){
             console.log('결과');
+			result = resultBefore.reduce((stack,el)=>{
+				return stack + el;
+			}, 0)
+			console.log(result);
             // resultAfter = resultBefore;
             // console.log(resultAfter);
-			console.log(resultBefore);
+			// console.log(resultBefore);
 			// resultAfter.forEach(elem => {
 			// 	result +=elem;
 			// })
@@ -63,7 +68,7 @@ btns.forEach(btn=>{
 			
 			let value = btn.value;
 			calculateProcess.step1.push(value);
-			console.log(calculateProcess.step1);
+			// console.log(calculateProcess.step1);
 			// calculateProcess.step2 = combineNumStep1; 
 			// console.log(calculateProcess.step2);
 		}
