@@ -1,15 +1,13 @@
-//과정
-
-/*
-1. 버튼을 누른다.
-2. 누른 값(1)을 저장한다
-3. 연산자를 누른다.
-4. 누른값이 화면에 표시되어야 한다.
-*/
-
-console.log("hello");
 
 const btns = document.querySelectorAll('.btn');
+let screen = document.querySelector('.defaultScreen');
+
+let defaultScreen = {
+	defaultValue:0
+}
+
+screen.value = defaultScreen.defaultValue;
+
 
 let calculateProcess = {
 	step1:[], // 첫 숫자 넣기
@@ -18,22 +16,27 @@ let calculateProcess = {
 }		
 
 let resultBefore = [];
-let resultAfter = [];
+let resultAfter = undefined;
 let result = undefined;
+
 
 btns.forEach(btn=>{
 	
-	btn.addEventListener('click',()=>{				
+	btn.addEventListener('click',()=>{
+		
+		// defaultScreen.defaultValue = 
+
 		
 		if(btn.dataset.attr == 'operator'){
-			console.log(calculateProcess.step1);
+			// console.log(calculateProcess.step1);
 			let combineNum = calculateProcess.step1.join(" ");
 			
 			resultBefore.push(combineNum);
 			resultBefore.push(btn.dataset.calculateType);
+
 			// 			
 			calculateProcess.step1.length = 0;
-			console.log(resultBefore)
+			resultAfter = resultBefore;
 			
 			if(btn.dataset.calculateType =='plus'){
 				console.log('더하기');
@@ -47,32 +50,33 @@ btns.forEach(btn=>{
 			if(btn.dataset.calculateType =='devide'){
 				// console.log('더하기')
 			}
+
+			screen.value = combineNum.replace(/\s/g, ''); //현재값 표시
 		};
         
         if(btn.dataset.attr =='result'){
-            console.log('결과');
-			result = resultBefore.reduce((stack,el)=>{
-				return stack + el;
-			}, 0)
-			console.log(result);
-            // resultAfter = resultBefore;
-            // console.log(resultAfter);
-			// console.log(resultBefore);
-			// resultAfter.forEach(elem => {
-			// 	result +=elem;
-			// })
-			// console.log(result);
-        }
-		
-		if(btn.dataset.attr =='num'){
+			resultAfter = resultBefore.filter((el)=>el !== '+'); // 연산자 중 + 제거
+			let deleteSpace = resultAfter.map(item => item.replace(/\s/g, '')); // 결합 중 밠생한 공백 제거
+			let resultChangeToNumber = deleteSpace.map(item => parseFloat(item)); // parseFloat으로 문자열을 수로 바꾸기
+
+			result = resultChangeToNumber.reduce((stack,el)=>{
+				return stack + el
+			},0)
 			
+			screen.value = result;
+			console.log(result);
+        };
+		
+		if(btn.dataset.attr =='num'){			
 			let value = btn.value;
 			calculateProcess.step1.push(value);
-			// console.log(calculateProcess.step1);
-			// calculateProcess.step2 = combineNumStep1; 
-			// console.log(calculateProcess.step2);
 		}
+
+		if(btn.dataset.attr =='reset'){
+			console.log('초기화하기')
+		};
+
+
 		
 	})
 })
-
