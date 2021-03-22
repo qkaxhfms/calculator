@@ -25,6 +25,8 @@ btns.forEach(btn=>{
 	btn.addEventListener('click',()=>{
 		
 		// defaultScreen.defaultValue = 
+		let deleteSpace = undefined;
+		let resultChangeToNumber = undefined;
 
 		
 		if(btn.dataset.attr == 'operator'){
@@ -35,8 +37,6 @@ btns.forEach(btn=>{
 			resultBefore.push(btn.dataset.calculateType);
 
 			// 			
-			calculateProcess.step1.length = 0;
-			resultAfter = resultBefore;
 			
 			if(btn.dataset.calculateType =='plus'){
 				console.log('더하기');
@@ -52,12 +52,15 @@ btns.forEach(btn=>{
 			}
 
 			screen.value = combineNum.replace(/\s/g, ''); //현재값 표시
+			calculateProcess.step1.length = 0;
+			resultAfter = resultBefore;
 		};
         
         if(btn.dataset.attr =='result'){
+			
 			resultAfter = resultBefore.filter((el)=>el !== '+'); // 연산자 중 + 제거
-			let deleteSpace = resultAfter.map(item => item.replace(/\s/g, '')); // 결합 중 밠생한 공백 제거
-			let resultChangeToNumber = deleteSpace.map(item => parseFloat(item)); // parseFloat으로 문자열을 수로 바꾸기
+			deleteSpace = resultAfter.map(item => item.replace(/\s/g, '')); // 결합 중 밠생한 공백 제거
+			resultChangeToNumber = deleteSpace.map(item => parseFloat(item)); // parseFloat으로 문자열을 수로 바꾸기
 
 			result = resultChangeToNumber.reduce((stack,el)=>{
 				return stack + el
@@ -65,8 +68,16 @@ btns.forEach(btn=>{
 			
 			screen.value = result;
 			console.log(result);
-        };
-		
+
+			console.log(defaultScreen.defaultValue);
+			console.log(calculateProcess.step1);
+			console.log(calculateProcess.step2);
+			console.log(calculateProcess.step3);
+			console.log(resultBefore)
+			console.log(resultAfter)
+		}
+
+
 		if(btn.dataset.attr =='num'){			
 			let value = btn.value;
 			calculateProcess.step1.push(value);
@@ -75,7 +86,6 @@ btns.forEach(btn=>{
 		if(btn.dataset.attr =='reset'){
 			console.log('초기화하기')
 		};
-
 
 		
 	})
