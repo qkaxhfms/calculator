@@ -24,22 +24,19 @@ btns.forEach(btn=>{
 	
 	btn.addEventListener('click',()=>{
 		
-		// defaultScreen.defaultValue = 
 		let deleteSpace = undefined;
 		let resultChangeToNumber = undefined;
 
 		
 		if(btn.dataset.attr == 'operator'){
-			// console.log(calculateProcess.step1);
 			let combineNum = calculateProcess.step1.join(" ");
 			
 			resultBefore.push(combineNum);
 			resultBefore.push(btn.dataset.calculateType);
 
-			// 			
 			
 			if(btn.dataset.calculateType =='plus'){
-				console.log('더하기');
+				// console.log('더하기');
 			}
 			if(btn.dataset.calculateType =='minus'){
 				// console.log('더하기')
@@ -67,14 +64,6 @@ btns.forEach(btn=>{
 			},0)
 			
 			screen.value = result;
-			console.log(result);
-
-			console.log(defaultScreen.defaultValue);
-			console.log(calculateProcess.step1);
-			console.log(calculateProcess.step2);
-			console.log(calculateProcess.step3);
-			console.log(resultBefore)
-			console.log(resultAfter)
 		}
 
 
