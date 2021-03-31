@@ -1,81 +1,85 @@
+  
+'use strict';
 
-const btns = document.querySelectorAll('.btn');
-let screen = document.querySelector('.defaultScreen');
 
-let defaultScreen = {
-	defaultValue:0
+let currentOp = '',
+    currentVal = 0;
+
+function digitBtnHandler() {
+  const digits = document.querySelectorAll('.digit');
+  digits.forEach(digit => {
+    digit.addEventListener('click', (evt) => {
+		const screen = document.querySelector('.screen');
+		let targetDigit = evt.target.innerText;
+		screen.value += targetDigit;
+		// screenFormat(targetDigit);
+    })
+  })
 }
 
-screen.value = defaultScreen.defaultValue;
+function calculate(operator, val1, val2) {
+	if (operator === '+') {
+		return val1 + val2;
+	} else if (operator === '-') {
+		return val1 - val2;
+	} else if (operator === '*') {
+		return val1 * val2;
+	} else if (operator === '/') {
+		return val1 / val2;
+	}
+}
 
-
-let calculateProcess = {
-	step1:[], // 첫 숫자 넣기
-	step2:undefined, // 넣은 숫자 동기화
-	step3:undefined,
-}		
-
-let resultBefore = [];
-let resultAfter = undefined;
-let result = undefined;
-
-
-btns.forEach(btn=>{
-	
-	btn.addEventListener('click',()=>{
-		
-		let deleteSpace = undefined;
-		let resultChangeToNumber = undefined;
-
-		
-		if(btn.dataset.attr == 'operator'){
-			let combineNum = calculateProcess.step1.join(" ");
-			
-			resultBefore.push(combineNum);
-			resultBefore.push(btn.dataset.calculateType);
-
-			
-			if(btn.dataset.calculateType =='plus'){
-				// console.log('더하기');
-			}
-			if(btn.dataset.calculateType =='minus'){
-				// console.log('더하기')
-			}
-			if(btn.dataset.calculateType =='multiply'){
-				// console.log('더하기')
-			}
-			if(btn.dataset.calculateType =='devide'){
-				// console.log('더하기')
-			}
-
-			screen.value = combineNum.replace(/\s/g, ''); //현재값 표시
-			calculateProcess.step1.length = 0;
-			resultAfter = resultBefore;
-		};
-        
-        if(btn.dataset.attr =='result'){
-			
-			resultAfter = resultBefore.filter((el)=>el !== '+'); // 연산자 중 + 제거
-			deleteSpace = resultAfter.map(item => item.replace(/\s/g, '')); // 결합 중 밠생한 공백 제거
-			resultChangeToNumber = deleteSpace.map(item => parseFloat(item)); // parseFloat으로 문자열을 수로 바꾸기
-
-			result = resultChangeToNumber.reduce((stack,el)=>{
-				return stack + el
-			},0)
-			
-			screen.value = result;
+function operatorBtnHandler() {
+  const operatorBtns = document.querySelectorAll('.operator');
+  operatorBtns.forEach(operatorBtn => {
+    operatorBtn.addEventListener('click', (evt) => {
+		const screen = document.querySelector('.screen');
+		let screenVal = Number(screen.value);
+		if (evt.target.innerText === '=') {
+			screen.value = calculate(currentOp, currentVal, screenVal);
+			currentOp = '';
+			return;
 		}
-
-
-		if(btn.dataset.attr =='num'){			
-			let value = btn.value;
-			calculateProcess.step1.push(value);
+		if (currentOp === '') {
+			currentVal = Number(screen.value);
+		} else {
+			currentVal = calculate(currentOp, currentVal, screenVal);
 		}
+		screen.value = '';
+		currentOp = evt.target.innerText;
+    })
+  })
+}
 
-		if(btn.dataset.attr =='reset'){
-			console.log('초기화하기')
-		};
-
-		
+function clearBtnHandler() {
+	const clearBtn = document.querySelector('.clear');
+	clearBtn.addEventListener('click', () => {
+		const screen = document.querySelector('.screen');
+			currentOp = '';
+			currentVal = 0;
+			screen.value = '';
 	})
-})
+}
+
+function decimalBtnHandler() {
+	const decimalBtn = document.querySelector('.decimal');
+	decimalBtn.addEventListener('click', () => {
+		const screen = document.querySelector('.screen');
+		let screenVal = screen.value;
+			if (!screenVal.includes('.')) {
+				let addDecimal = screen.value + '.';
+				screen.value = addDecimal;
+			}
+	})
+}
+
+
+
+function init() {
+	digitBtnHandler();
+	operatorBtnHandler();
+	clearBtnHandler();
+	decimalBtnHandler();
+}
+
+init();

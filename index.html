@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Calculator</title>
-        <link rel="stylesheet" href="calculator.css">
-        <script defer src="calculator.js"></script>
-    </head>
-    <body>
-        <!-- 계산기:S -->
-        <div class="calculator">
-            <!-- 패널:S -->
-            <div class="screen">
-                <input type="text" class="defaultScreen" value disabled />
-            </div>
-            <!-- 패널:E -->
-
-            <button type="button" class="btn" data-attr="operator" data-calculate-type="+" value="+">+</button>
-            <button type="button" class="btn" data-attr="operator" data-calculate-type="-" value="-" disabled>-</button>
-            <button type="button" class="btn" data-attr="operator" data-calculate-type="*" value="x" disabled>x</button>
-            <button type="button" class="btn" data-attr="operator" data-calculate-type="/" value="/" disabled>/</button>
-
-            <button type="button" class="btn" data-attr="num" value="1">1</button>
-            <button type="button" class="btn" data-attr="num" value="2">2</button>
-            <button type="button" class="btn" data-attr="num" value="3">3</button>
-            <button type="button" class="btn operator result" data-attr="result" value="=">=</button>
-
-            <button type="button" class="btn" data-attr="num" value="4">4</button>
-            <button type="button" class="btn" data-attr="num" value="5">5</button>
-            <button type="button" class="btn" data-attr="num" value="6">6</button>
-            <button type="button" class="btn reset" data-attr="reset" value="cal">C</button>
-
-            <button type="button" class="btn" data-attr="num" value="7">7</button>
-            <button type="button" class="btn" data-attr="num" value="8">8</button>
-            <button type="button" class="btn" data-attr="num" value="9">9</button>
-
-            <button type="button" class="btn zero" data-attr="num" value="0">0</button>
-            <button type="button" class="btn dot" data-attr="num" value=".">.</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css" />
+    <script defer src="calculator.js"></script>
+</head>
+<body>
+    <div class="calculator">
+        <div class="screenContainer">
+            <input type="text" class="screen" />
         </div>
-        <!-- 계산기:E -->
-    </body>
+        <button type="button" class="btn operator">+</button>
+        <button type="button" class="btn operator">-</button>
+        <button type="button" class="btn operator">*</button>
+        <button type="button" class="btn operator">/</button>
+
+        <button type="button" class="btn digit">1</button>
+        <button type="button" class="btn digit">2</button>
+        <button type="button" class="btn digit">3</button>
+        <button type="button" class="btn result operator">=</button>
+
+        <button type="button" class="btn digit">4</button>
+        <button type="button" class="btn digit">5</button>
+        <button type="button" class="btn digit">6</button>
+        <button type="button" class="btn reset clear">C</button>
+
+        <button type="button" class="btn digit">7</button>
+        <button type="button" class="btn digit">8</button>
+        <button type="button" class="btn digit">9</button>
+        <button type="button" class="btn zero digit">0</button>
+
+        <button type="button" class="btn dot decimal">.</button>
+
+    </div>
+</body>
 </html>
