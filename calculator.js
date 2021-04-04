@@ -1,23 +1,26 @@
-  
-'use strict';
+// calculator
+'use strict'; //use strict 선언
 
-
+// 초기값 선언
 let currentOp = '',
     currentVal = 0;
 
+// 버튼 누를때 생성
 function digitBtnHandler() {
   const digits = document.querySelectorAll('.digit');
   digits.forEach(digit => {
-    digit.addEventListener('click', (evt) => {
+    digit.addEventListener('click', (event) => {
 		const screen = document.querySelector('.screen');
-		let targetDigit = evt.target.innerText;
+		let targetDigit = event.target.innerText;
 		screen.value += targetDigit;
-		// screenFormat(targetDigit);
+		console.log(targetDigit);
     })
   })
 }
 
+// 계산
 function calculate(operator, val1, val2) {
+	// 사칙연산
 	if (operator === '+') {
 		return val1 + val2;
 	} else if (operator === '-') {
@@ -32,10 +35,11 @@ function calculate(operator, val1, val2) {
 function operatorBtnHandler() {
   const operatorBtns = document.querySelectorAll('.operator');
   operatorBtns.forEach(operatorBtn => {
-    operatorBtn.addEventListener('click', (evt) => {
+    operatorBtn.addEventListener('click', (event) => {
 		const screen = document.querySelector('.screen');
 		let screenVal = Number(screen.value);
-		if (evt.target.innerText === '=') {
+		// console.log(screenVal)
+		if (event.target.innerText === '=') {
 			screen.value = calculate(currentOp, currentVal, screenVal);
 			currentOp = '';
 			return;
@@ -46,11 +50,12 @@ function operatorBtnHandler() {
 			currentVal = calculate(currentOp, currentVal, screenVal);
 		}
 		screen.value = '';
-		currentOp = evt.target.innerText;
+		currentOp = event.target.innerText;
     })
   })
 }
 
+// 초기화
 function clearBtnHandler() {
 	const clearBtn = document.querySelector('.clear');
 	clearBtn.addEventListener('click', () => {
